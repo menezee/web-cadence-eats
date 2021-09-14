@@ -3,6 +3,7 @@ import { Input } from 'baseui/input';
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid';
 import { ListItem } from 'baseui/list';
 import { useStyletron } from 'baseui';
+import { Link } from 'react-router-dom';
 
 import { RestaurantCard } from '../../components';
 
@@ -35,16 +36,18 @@ function RestaurantList() {
           {
             mockedListOfRestaurants
               .map((restaurant) => (
-                <ListItem
-                  {...listItemPadding}
-                  key={restaurant.name}
-                >
-                  <RestaurantCard
-                    name={restaurant.name}
-                    description={restaurant.description}
-                    image={restaurant.image}
-                  />
-                </ListItem>
+                <Link to={`/restaurant/${restaurant.name}`}>
+                  <ListItem
+                    {...listItemPadding}
+                    key={restaurant.name}
+                  >
+                    <RestaurantCard
+                      name={restaurant.name}
+                      description={restaurant.description}
+                      image={restaurant.image}
+                    />
+                  </ListItem>
+                </Link>
               ))
           }
         </ul>

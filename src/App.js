@@ -1,24 +1,23 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { RestaurantList } from './screens';
+import { RestaurantList, RestaurantMenu } from './screens';
 import { Header } from './components';
-
-import './App.css';
 
 function App() {
   return (
-    <>
+    <Router>
       <Header/>
       <main>
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              <RestaurantList/>
-            </Route>
-          </Switch>
-        </Router>
+        <Switch>
+          <Route exact path="/">
+            <RestaurantList/>
+          </Route>
+          <Route exact path="/restaurant/:name">
+            <RestaurantMenu/>
+          </Route>
+        </Switch>
       </main>
-    </>
+    </Router>
   );
 }
 
