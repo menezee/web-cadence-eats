@@ -20,6 +20,12 @@ function Header() {
     <FlexGrid
       flexGridColumnCount={3}
       padding="scale900"
+      position="sticky"
+      top={0}
+      left={0}
+      right={0}
+      backgroundColor="white"
+      overrides={{ Block: { style: { zIndex: 9 } } }}
     >
       <FlexGridItem {...narrowItem}>
         <Menu size={23}/>
