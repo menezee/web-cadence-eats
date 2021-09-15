@@ -10,7 +10,7 @@ import { useStyletron } from 'baseui';
 
 import { CartContext } from '../../contexts/cart';
 
-function Meal({ image, name, restaurant }) {
+function Meal({ image, name, restaurant, addable = true }) {
   const { addMeal } = useContext(CartContext);
   const [, theme] = useStyletron();
   
@@ -28,11 +28,15 @@ function Meal({ image, name, restaurant }) {
       <StyledBody>
         Proin ut dui sed metus pharetra hend rerit vel
       </StyledBody>
-      <StyledAction>
-        <StyledLink onClick={addToCart} style={{ color: theme.colors.accent }}>
-          Adicionar ao carrinho!
-        </StyledLink>
-      </StyledAction>
+      {
+        addable && (
+          <StyledAction>
+            <StyledLink onClick={addToCart} style={{ color: theme.colors.accent, cursor: 'pointer' }}>
+              Adicionar ao carrinho!
+            </StyledLink>
+          </StyledAction>
+        )
+      }
     </Card>
   );
 }

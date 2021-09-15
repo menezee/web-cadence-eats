@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { RestaurantList, RestaurantMenu } from './screens';
+import { RestaurantList, RestaurantMenu, ReviewOrder } from './screens';
 import { Header, CartOverlay } from './components';
 
 function App() {
@@ -15,9 +15,12 @@ function App() {
           <Route exact path="/restaurant/:name">
             <RestaurantMenu/>
           </Route>
+          <Route exact path="/review">
+            <ReviewOrder/>
+          </Route>
         </Switch>
       </main>
-      <CartOverlay />
+      <CartOverlay/>
     </Router>
   );
 }
