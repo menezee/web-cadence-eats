@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { RestaurantList, RestaurantMenu } from './screens';
-import { Header } from './components';
+import { Header, CartOverlay } from './components';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           </Route>
         </Switch>
       </main>
+      <CartOverlay />
     </Router>
   );
 }

@@ -6,6 +6,7 @@ import { LightTheme, BaseProvider } from 'baseui';
 
 import './index.css';
 import App from './App';
+import CartContextProvider from './contexts/cart';
 import reportWebVitals from './reportWebVitals';
 
 const engine = new Styletron();
@@ -14,7 +15,9 @@ ReactDOM.render(
   <React.StrictMode>
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
-        <App/>
+        <CartContextProvider>
+          <App/>
+        </CartContextProvider>
       </BaseProvider>
     </StyletronProvider>
   </React.StrictMode>,

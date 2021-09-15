@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   Card,
   StyledBody,
@@ -7,21 +8,28 @@ import {
 import { StyledLink } from 'baseui/link';
 import { useStyletron } from 'baseui';
 
-function Meal({ image, name }) {
+import { CartContext } from '../../contexts/cart';
+
+function Meal({ image, name, restaurant }) {
+  const { addMeal } = useContext(CartContext);
   const [, theme] = useStyletron();
+  
+  const addToCart = () => {
+    addMeal({ name, image, restaurant });
+  };
   
   return (
     <Card
       title={name}
     >
       <StyledThumbnail
-        src={image} // 300x300
+        src={image}
       />
       <StyledBody>
         Proin ut dui sed metus pharetra hend rerit vel
       </StyledBody>
       <StyledAction>
-        <StyledLink onClick={() => { alert('clicked') }} style={{ color: theme.colors.accent }}>
+        <StyledLink onClick={addToCart} style={{ color: theme.colors.accent }}>
           Adicionar ao carrinho!
         </StyledLink>
       </StyledAction>

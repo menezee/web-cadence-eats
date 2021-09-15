@@ -12,7 +12,7 @@ function RestaurantMenu() {
   const [restaurant] = useState(filterRestaurant);
   
   return (
-    <Block height="100vw">
+    <Block height="100%">
       <div style={{ position: 'relative', width: '100%', height: '228px' }}>
         <div style={{ position: 'absolute', height: '100%', width: '100%' }}>
           <img
@@ -46,7 +46,7 @@ function RestaurantMenu() {
             .meals
             .map(meal => (
               <FlexGridItem key={meal.name}>
-                <Meal image={meal.image} name={meal.name} />
+                <Meal image={meal.image} name={meal.name} restaurant={restaurant.name} />
               </FlexGridItem>
             ))
         }
