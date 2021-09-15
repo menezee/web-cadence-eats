@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { RestaurantList, RestaurantMenu, ReviewOrder } from './screens';
+import { Confirmation, RestaurantList, RestaurantMenu, ReviewOrder } from './screens';
 import { Header, CartOverlay } from './components';
 
 function App() {
@@ -17,6 +17,9 @@ function App() {
           </Route>
           <Route exact path="/review">
             <ReviewOrder/>
+          </Route>
+          <Route exact path="/confirmation">
+            <Confirmation/>
           </Route>
         </Switch>
       </main>

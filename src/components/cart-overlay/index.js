@@ -13,6 +13,7 @@ function UseStyletronExample() {
   
   if (
     location.pathname === '/review' ||
+    location.pathname === '/confirmation' ||
     meals.length === 0
   ) return null;
   

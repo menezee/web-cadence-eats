@@ -36,11 +36,8 @@ function RestaurantList() {
           {
             mockedListOfRestaurants
               .map((restaurant) => (
-                <Link to={`/restaurant/${restaurant.name}`}>
-                  <ListItem
-                    {...listItemPadding}
-                    key={restaurant.name}
-                  >
+                <Link to={`/restaurant/${restaurant.name}`} key={restaurant.name}>
+                  <ListItem{...listItemPadding}>
                     <RestaurantCard
                       name={restaurant.name}
                       description={restaurant.description}
