@@ -1,31 +1,23 @@
-import { useState, useEffect } from 'react';
 import { Display3 } from 'baseui/typography';
 import { useStyletron } from 'baseui';
 
-import PaymentService from '../../clients/payment';
+import EatsService from '../../clients/eats-service';
+import usePolling from '../../hooks/usePolling';
 
 const FIVE_SECONDS = 5000;
 
 function Confirmation() {
   const [css, theme] = useStyletron();
-  const [paymentConfirmation, setPaymentConfirmation] = useState(false);
-  
-  useEffect(() => {
-    (async () => {
-      const interval = setInterval(async () => {
-        const { status } = await PaymentService.submitPayment();
-        if (status === 'SUCCESS') {
-          setPaymentConfirmation(true);
-          clearInterval(interval);
-        }
-      }, FIVE_SECONDS);
-    })();
-  }, []);
+  // const [paymentConfirmation, setPaymentConfirmation] = useState(false);
+  const paymentConfirmation = usePolling(
+    async () => (await EatsService.submitPayment(42))['PaymentApproved'],
+    FIVE_SECONDS,
+  );
   
   return (
     <div className={css({ padding: theme.sizing.scale400 })}>
       {
-        paymentConfirmation ? (
+        paymentConfirmation === true ? (
           <Display3>
             Payment confirmed!
           </Display3>
