@@ -15,7 +15,7 @@ function CartContextProvider({ children }) {
   };
   
   return (
-    <CartContext.Provider value={{ meals, addMeal, workflowId, setWorkflowId, orderDataDetails, setOrderDataDetails }}>
+    <CartContext.Provider value={{ meals, addMeal, workflowId, setWorkflowId, orderDataDetails, setOrderDataDetails, setMeals }}>
       {children}
     </CartContext.Provider>
   );

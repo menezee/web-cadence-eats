@@ -19,14 +19,17 @@ function EstimatingArrival() {
   
   const history = useHistory();
   const orderData = usePolling(
-    async () => (await EatsService.getStatus(workflowId))['ETA'],
+    async () => (await EatsService.getStatus(workflowId)),
     FIVE_SECONDS,
-    ({ ETA, CourierName }) => ({ ETA, CourierName })
+    ({ ETA, CourierName }) => ({ ETA, CourierName }),
+    ({ ETA, CourierName }) => ETA !== undefined && CourierName !== undefined,
   );
   
   if (orderData !== null) {
     setOrderDataDetails(orderData);
-    history.push('/courier-on-their-way');
+    setTimeout(() => {
+      history.push('/courier-on-their-way');
+    }, 2000)
   }
   
   useEffect(() => {

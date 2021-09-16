@@ -3,6 +3,7 @@ import { useStyletron } from 'baseui';
 import { H3 } from 'baseui/typography';
 import { ProgressBar } from 'baseui/progress-bar';
 import { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { CourierOnWay, Courier } from '../../images';
 import { CartContext } from '../../contexts/cart';
 
@@ -10,6 +11,7 @@ function CourierOnTheirWay() {
   const { orderDataDetails } = useContext(CartContext);
   const [css, theme] = useStyletron();
   const [progress, setProgress] = useState(0);
+  const history = useHistory();
   
   useEffect(() => {
     if (progress < 90) {
@@ -18,6 +20,12 @@ function CourierOnTheirWay() {
       }, 1000);
     }
   }, [progress]);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      history.push('/order-arrived');
+    }, 5000);
+  }, []);
   
   const getDatePlusETA = () => {
     const now = Date.now() + orderDataDetails.ETA * 1000;

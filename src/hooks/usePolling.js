@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 
-function usePolling(fn, interval, adapter) {
+function usePolling(fn, interval, adapter, condition) {
   const [response, setResponse] = useState(null);
   
   useEffect(() => {
     (async () => {
       const intervalId = setInterval(async () => {
         const res = await fn();
-        if (res !== undefined) {
+        const finalCondition = condition !== undefined ? condition(res) : (res !== undefined);
+        
+        if (finalCondition) {
           
           if (adapter !== undefined) {
             setResponse(adapter(res));

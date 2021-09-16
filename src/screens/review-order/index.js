@@ -27,7 +27,9 @@ function ReviewOrder() {
   const submitOrder = async () => {
     const workflowId = await EatsService.createOrder(42);
     setWorkflowId(workflowId);
-    history.push('/confirmation');
+    setTimeout(() => {
+      history.push('/confirmation');
+    }, 2000);
   };
   
   return (
