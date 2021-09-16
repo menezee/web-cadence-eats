@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function usePolling(fn, interval) {
+function usePolling(fn, interval, adapter) {
   const [response, setResponse] = useState(null);
   
   useEffect(() => {
@@ -8,7 +8,12 @@ function usePolling(fn, interval) {
       const intervalId = setInterval(async () => {
         const res = await fn();
         if (res !== undefined) {
-          setResponse(res);
+          
+          if (adapter !== undefined) {
+            setResponse(adapter(res));
+          } else {
+            setResponse(res);
+          }
           clearInterval(intervalId);
         }
       }, interval);

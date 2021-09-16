@@ -11,9 +11,12 @@ function UseStyletronExample() {
   const history = useHistory();
   const location = useLocation();
   
+  console.log('[DEBUG] location', location);
+  
   if (
     location.pathname === '/review' ||
     location.pathname === '/confirmation' ||
+    location.pathname === '/eta' ||
     meals.length === 0
   ) return null;
   

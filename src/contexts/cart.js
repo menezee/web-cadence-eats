@@ -4,6 +4,8 @@ const CartContext = createContext({});
 
 function CartContextProvider({ children }) {
   const [meals, setMeals] = useState([]);
+  const [workflowId, setWorkflowId] = useState(null);
+  const [orderDataDetails, setOrderDataDetails] = useState({ CourierName: 'Bruce', ETA: 900 });
   
   const addMeal = newMeal => {
     setMeals([
@@ -13,7 +15,7 @@ function CartContextProvider({ children }) {
   };
   
   return (
-    <CartContext.Provider value={{ meals, addMeal, }}>
+    <CartContext.Provider value={{ meals, addMeal, workflowId, setWorkflowId, orderDataDetails, setOrderDataDetails }}>
       {children}
     </CartContext.Provider>
   );

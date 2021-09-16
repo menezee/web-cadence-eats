@@ -7,10 +7,11 @@ import { useHistory } from 'react-router-dom';
 
 import { CartContext } from '../../contexts/cart';
 import { Meal } from '../../components';
+import EatsService from '../../clients/eats-service';
 
 function ReviewOrder() {
   const [css, theme] = useStyletron();
-  const { meals } = useContext(CartContext);
+  const { meals, setWorkflowId } = useContext(CartContext);
   const history = useHistory();
   
   const stickyButton = css({
@@ -22,6 +23,12 @@ function ReviewOrder() {
     bottom: 0,
     zIndex: 9,
   });
+  
+  const submitOrder = async () => {
+    const workflowId = await EatsService.createOrder(42);
+    setWorkflowId(workflowId);
+    history.push('/confirmation');
+  };
   
   return (
     <Block
@@ -56,7 +63,7 @@ function ReviewOrder() {
               },
             },
           }}
-          onClick={() => { history.push('/confirmation'); }}
+          onClick={submitOrder}
         >
           Finalizar a compra
         </Button>

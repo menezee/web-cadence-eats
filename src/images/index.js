@@ -11,3 +11,6 @@ export { default as Burger1 } from './burger1.jpeg';
 export { default as Burger2 } from './burger2.jpeg';
 export { default as Burger3 } from './burger3.jpeg';
 export { default as UberEatsLogo } from './uber-eats-logo.svg';
+export { default as ConfirmationBurger } from './confirmation-burger.svg';
+export { default as CourierOnWay } from './courier-on-way.png';
+export { default as Courier } from './courier.png';
